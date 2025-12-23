@@ -3,7 +3,7 @@ import SitemapHandler from '../core/sitemap.js';
 
 class SitemapMode extends BaseMode {
   constructor() {
-    super('sitemap-mode'); //
+    super('sitemap-mode'); // Config-tiedosto on sitemap-mode.json
   }
 
   async extractData(page, url) {

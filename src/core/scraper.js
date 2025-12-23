@@ -1,15 +1,16 @@
 import browser from './browser.js';
 import SitemapHandler from './sitemap.js';
+import BaseMode from '../modes/base-mode.js';
 import WordPressMode from '../modes/wordpress-mode.js';
 import DataflowVkMode from '../modes/dataflow-vk-mode.js';
-import CompanyMode from '../modes/company-mode.js';
+import DataflowTravelMode from '../modes/dataflow-travel-mode.js';
 import DataCleaner from '../utils/data-cleaner.js';
 import ChatbotMode from '../modes/chatbot-mode.js';
 import DataflowSitesMode from '../modes/dataflow-sites-mode.js';
 import SitemapMode from '../modes/sitemap-mode.js';
 
 class Scraper {
-  constructor(url, mode = 'company', useSitemap = false) {
+  constructor(url, mode = 'default', useSitemap = false) {
     this.url = url;
     this.mode = mode;
     this.useSitemap = useSitemap; // Explicit flag to use sitemap
@@ -25,8 +26,10 @@ class Scraper {
         return new WordPressMode();
       case 'dataflow-vk':
         return new DataflowVkMode();
-      case 'company':
-        return new CompanyMode();
+      case 'dataflow-travel':
+        return new DataflowTravelMode();
+      case 'default':
+        return new BaseMode('default');
       case 'chatbot':
         return new ChatbotMode();
       case 'dataflow-sites':

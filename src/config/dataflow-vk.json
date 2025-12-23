@@ -35,8 +35,8 @@
     },
     
     "contact_info": {
-      "container": "footer, .footer, .contact-info",
-      "address": "address, p",
+      "container": ".footer-content-column",
+      "address": "p",
       "phone": "a[href^='tel:']",
       "email": "a[href^='mailto:']"
     },

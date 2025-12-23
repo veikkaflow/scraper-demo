@@ -1,0 +1,110 @@
+{
+  "name": "default",
+  "detection": {
+    "selectors": [],
+    "patterns": []
+  },
+  "sitemap": {
+    "enabled": true,
+    "priority": false
+  },
+  "selectors": {
+    "title": "h1, .page-title, .site-title, .hero-title, .entry-title, title",
+    "description": ".description, .site-description, .meta-description, meta[name='description']",
+    "max_text_length": 5000,
+    "min_text_length": 20,
+    "wanted_selectors": [
+      "main",
+      "article",
+      ".main-content",
+      ".content",
+      ".entry-content",
+      ".post-content",
+      ".article-content",
+      "[role='main']",
+      "section",
+      ".section",
+      ".page-content",
+      ".post-body",
+      ".article-body"
+    ],
+    "contact_info": {
+      "container": "footer, .footer, .contact, .contact-info, [class*='contact'], address",
+      "email": "a[href^='mailto:'], .email, [class*='email'], [class*='e-mail']",
+      "phone": "a[href^='tel:'], .phone, [class*='phone'], [class*='tel']",
+      "address": "address, .address, [class*='address'], [itemprop='address']"
+    },
+    "services": {
+      "container": ".service, [class*='service'], .feature, .service-item, [class*='feature']",
+      "title": "h2, h3, h4, .service-title, .feature-title, .title",
+      "description": "p, .service-description, .feature-description, .description"
+    },
+    "social_links": {
+      "container": ".social, [class*='social'], .social-media, [class*='social-media']",
+      "link": "a[href*='facebook'], a[href*='twitter'], a[href*='instagram'], a[href*='linkedin'], a[href*='youtube'], a[href*='github']"
+    },
+    "logos": {
+      "container": "img[alt*='logo'], img[alt*='Logo'], .logo img, [class*='logo'] img, header img, .site-logo img, .brand-logo img, [id*='logo'] img",
+      "src": "src",
+      "alt": "alt"
+    },
+    "colors": {
+      "elements": "body, header, footer, nav, main, .header, .footer, .navbar, .hero, .banner, h1, h2, h3, a, button, .btn",
+      "properties": ["background-color", "color"],
+      "maxColors": 10
+    },
+    "unwanted_selectors": [
+      ".cookie-block",
+      "#cookieDiv",
+      "[id='cookieDiv']",
+      ".cookie-compact",
+      "[class*='cookie-compact']",
+      ".row.cookie-compact",
+      "[class*='cookie']",
+      "[id*='cookie']",
+      "#notification-block",
+      "[id*='notification']",
+      "[class*='notification']",
+      "nav",
+      ".top-menu",
+      ".admin-bar",
+      ".mega-header-block",
+      "header",
+      "footer",
+      ".footer",
+      "[class*='footer']",
+      "aside",
+      "script",
+      "style",
+      "noscript",
+      "[class*='privacy']",
+      "[id*='privacy']",
+      "[class*='gdpr']",
+      "[id*='gdpr']",
+      "[class*='consent']",
+      "[id*='consent']",
+      "[class*='banner']",
+      "[id*='banner']",
+      "[class*='popup']",
+      "[id*='popup']",
+      "[class*='modal']",
+      "[id*='modal']",
+      "[class*='slider']",
+      "[class*='menu']",
+      "[class*='cart']",
+      "[class*='login']",
+      "[class*='account']",
+      "[role='navigation']",
+      "[role='banner']",
+      "[role='complementary']",
+      "[aria-label*='cookie']",
+      "[aria-label*='privacy']",
+      "[aria-label*='eväste']",
+      "[aria-label*='tietosuoja']"
+    ]
+  },
+  "extractors": {
+    "custom": ["colors"]
+  }
+}
+

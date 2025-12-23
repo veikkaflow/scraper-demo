@@ -1,0 +1,117 @@
+{
+  "name": "dataflow-travel",
+  "detection": {
+    "selectors": [],
+    "patterns": []
+  },
+  "sitemap": {
+    "enabled": true,
+    "priority": false
+  },
+  "selectors": {
+    "title": "h1, title",
+    
+    "description": ".travel-headline-text-block p, .description",
+    
+    "hero": {
+      "container": ".travel-main-slider .item",
+      "title": "h2, .item-title",
+      "subtitle": ".h3, p",
+      "cta": "a, button"
+    },
+    
+    "experiences": {
+      "container": ".travel-highlightbox-bg-image-block .hlbox",
+      "title": "h2, h3",
+      "description": "p",
+      "price": ".price",
+      "image": "img",
+      "action": "a",
+      "link": "a"
+    },
+    
+    "accommodations": {
+      "container": ".travel-cabin-list-highlights-block .cabin-item",
+      "title": "h3, h4",
+      "price": ".price",
+      "capacity": "p",
+      "image": "img",
+      "link": "a"
+    },
+    
+    "tours": {
+      "container": ".travel-image-text-button-list-block .list-item",
+      "title": "h3",
+      "description": ".description, p",
+      "price": ".subtitle, p.subtitle",
+      "image": "img",
+      "link": "a.btn"
+    },
+ 
+    "blog_posts": {
+      "container": ".blog-list-hl-block .item, article",
+      "title": "h3, h4",
+      "date": "p, time",
+      "excerpt": "p",
+      "link": "a"
+    },
+    
+    "contact_info": {
+      "container": ".footer-content-column",
+      "address": "p",
+      "phone": "a[href^='tel:']",
+      "email": "a[href^='mailto:']"
+    },
+    
+    
+    "logos": {
+      "container": "img[alt*='logo'], img[alt*='Logo'], .logo img, [class*='logo'] img, header img",
+      "src": "src",
+      "alt": "alt"
+    },
+    
+    "colors": {
+      "elements": "body, header, footer, nav, main, .header, .footer, .navbar, .hero, h1, h2, h3, a, button, .btn",
+      "properties": ["background-color", "color"],
+      "maxColors": 10
+    },
+    
+    "unwanted_selectors": [
+      ".cookie-block",
+      "#cookieDiv",
+      "[id='cookieDiv']",
+      ".cookie-compact",
+      "[class*='cookie-compact']",
+      ".row.cookie-compact",
+      "[class*='cookie']",
+      "[id*='cookie']",
+      "[id*='notification']",
+      "[class*='notification']",
+      "nav",
+      ".top-menu",
+      ".admin-bar",
+      "aside",
+      "script",
+      "style",
+      "noscript",
+      "[class*='privacy']",
+      "[id*='privacy']",
+      "[class*='gdpr']",
+      "[id*='gdpr']",
+      "[class*='consent']",
+      "[id*='consent']",
+      "[class*='banner']",
+      "[id*='banner']",
+      "[class*='popup']",
+      "[id*='popup']",
+      "[class*='modal']",
+      "[id*='modal']",
+      "[role='navigation']",
+      "[role='banner']",
+      "[role='complementary']"
+    ]
+  },
+  "extractors": {
+    "custom": ["colors"]
+  }
+}
