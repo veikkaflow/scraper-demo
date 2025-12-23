@@ -1,0 +1,72 @@
+{
+  "name": "dataflow-vk",
+  "detection": {
+    "selectors": [],
+    "patterns": []
+  },
+  "sitemap": {
+    "enabled": true,
+    "priority": false
+  },
+  "selectors": {
+    "title": "h1, title",
+    
+    "hero": {
+      "container": ".hero, .hero-section, .main-hero",
+      "title": "h1",
+      "subtitle": "p, .subtitle",
+      "cta": "a, button"
+    },
+    
+    "products": {
+      "container": ".item-column, .product-item, .item",
+      "title": "h2, h3, h4, .item-title, .product-title",
+      "price": ".item-price, .price, [class*='price']",
+      "availability": ".warehouse-saldo, .availability, [class*='availability'], [class*='stock']",
+      "image": "img",
+      "badge": ".new, [class*='badge'], [class*='UUSI']",
+      "link": ".item-link, a"
+    },
+    
+    "categories": {
+      "container": "[class*='js-menu-item']",
+      "title": "span",
+      "link": "a"
+    },
+    
+    "contact_info": {
+      "container": "footer, .footer, .contact-info",
+      "address": "address, p",
+      "phone": "a[href^='tel:']",
+      "email": "a[href^='mailto:']"
+    },
+    
+    "logos": {
+      "container": ".logo, [class*='logo'] img, header img",
+      "src": "src",
+      "alt": "alt"
+    },
+    
+    "colors": {
+      "elements": "body, h1, h2, h3, a, button",
+      "properties": ["background-color", "color"],
+      "maxColors": 10
+    },
+    
+    "unwanted_selectors": [
+      ".cookie-block",
+      "#cookieDiv",
+      "[class*='cookie']",
+      "[id*='cookie']",
+      "nav",
+      ".top-menu",
+      ".admin-bar",
+      "script",
+      "style",
+      "noscript"
+    ]
+  },
+  "extractors": {
+    "custom": ["colors"]
+  }
+}

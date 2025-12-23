@@ -1,0 +1,84 @@
+{
+    "name": "dataflow-sites",
+    "detection": {
+      "selectors": [],
+      "patterns": []
+    },
+    "sitemap": {
+      "enabled": true,
+      "priority": false
+    },
+    "selectors": {
+      "title": "h1, title",
+      
+      "services": {
+        "container": ".highlightbox-multiple-block .item",
+        "title": "h2",
+        "description": "p",
+        "cta": "a"
+      },
+      
+      "references": {
+        "container": ".background-slider-3-items",
+        "title": "h2",
+        "description": "p",
+        "link": "a"
+      },
+      
+      "products": {
+        "container": ".item-column",
+        "title": "h3",
+        "image": "img",
+        "badge": ".new",
+        "link": "a"
+      },
+      
+      "testimonials": {
+        "container": ".testimonial-slick-slider-item",
+        "text": "p",
+        "author": ".h6"
+      },
+      
+      "blog_posts": {
+        "container": ".blog-list-hl-block .item",
+        "title": "h3",
+        "date": "p.text-muted",
+        "excerpt": "p:not(.text-muted)",
+        "link": "a"
+      },
+      
+      "contact_info": {
+        "container": ".footer-content-column:first-child",
+        "address": "p",
+        "phone": "a[href^='tel:']",
+        "email": "a[href^='mailto:']"
+      },
+      
+      "logos": {
+        "container": ".header-logo-img",
+        "src": "src",
+        "alt": "alt"
+      },
+      
+      "colors": {
+        "elements": "body, h1, h2, h3, a, button",
+        "properties": ["background-color", "color"],
+        "maxColors": 10
+      },
+      
+      "unwanted_selectors": [
+        ".cookie-block",
+        "#cookieDiv",
+        "[class*='cookie']",
+        "nav",
+        ".top-menu",
+        ".admin-bar",
+        "script",
+        "style",
+        "noscript"
+      ]
+    },
+    "extractors": {
+      "custom": ["colors"]
+    }
+  }

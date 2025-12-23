@@ -1,0 +1,48 @@
+{
+  "name": "wordpress",
+  "detection": {
+    "selectors": ["meta[name='generator'][content*='WordPress']"],
+    "patterns": ["wp-content", "wp-json", "woocommerce"]
+  },
+  "sitemap": {
+    "enabled": false,
+    "priority": false
+  },
+  "selectors": {
+    "products": {
+      "container": "li.product, .product, article.product, .woocommerce-loop-product, .woocommerce-loop-product__link, .wc-block-grid__product, [class*='product type-product'], [class*='type-product']",
+      "title": "h2, h3, .product-title, .woocommerce-loop-product__title, .wc-block-grid__product-title, .entry-title, a.woocommerce-LoopProduct-link, .product_title",
+      "price": ".price, .woocommerce-Price-amount, .amount, .price-wrapper, .woocommerce-Price, span.price, .product-price",
+      "availability": ".stock-status, .availability, .stock, [class*='stock'], .stock.in-stock, .stock.out-of-stock, .woocommerce-loop-product__availability",
+      "image": "img, .product-image img, .wp-post-image, .woocommerce-loop-product__link img, .attachment-woocommerce_thumbnail",
+      "link": "a, .woocommerce-LoopProduct-link, a.woocommerce-loop-product__link"
+    },
+    "products_alternative": {
+      "container": "li[class*='product'], article[class*='product'], div[class*='product'], [class*='type-product'], .woocommerce ul.products li, .products li",
+      "title": "h2, h3, .product-title, .woocommerce-loop-product__title, a.woocommerce-LoopProduct-link, .entry-title",
+      "price": ".price, .woocommerce-Price-amount, .amount, span.price",
+      "image": "img",
+      "link": "a"
+    },
+    "title": "h1, .site-title, .entry-title",
+    "description": ".site-description, .entry-content, .post-content",
+    "unwanted_selectors": [
+      ".cookie-block",
+      "[class*='cookie']",
+      "[id*='cookie']",
+      "#notification-block",
+      "[class*='notification']",
+      "nav",
+      "header",
+      "footer",
+      "aside",
+      "script",
+      "style",
+      "noscript"
+    ]
+  },
+  "extractors": {
+    "custom": []
+  }
+}
+

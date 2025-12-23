@@ -1,0 +1,29 @@
+{
+  "name": "web-scraper-service",
+  "version": "1.0.0",
+  "description": "Flexible web scraper service for e-commerce and company websites",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js"
+  },
+  "keywords": [
+    "scraper",
+    "crawler",
+    "web-scraping",
+    "e-commerce"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "puppeteer": "^21.5.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
