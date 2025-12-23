@@ -1,0 +1,14 @@
+{
+    "name": "sitemap-mode",
+    "detection": {
+    },
+    "sitemap": {
+      "enabled": true,
+      "priority": true
+    },
+    "selectors": {
+      "products": {
+
+      }
+    }
+}

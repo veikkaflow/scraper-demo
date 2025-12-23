@@ -6,6 +6,7 @@ import CompanyMode from '../modes/company-mode.js';
 import DataCleaner from '../utils/data-cleaner.js';
 import ChatbotMode from '../modes/chatbot-mode.js';
 import DataflowSitesMode from '../modes/dataflow-sites-mode.js';
+import SitemapMode from '../modes/sitemap-mode.js';
 
 class Scraper {
   constructor(url, mode = 'company', useSitemap = false) {
@@ -30,6 +31,8 @@ class Scraper {
         return new ChatbotMode();
       case 'dataflow-sites':
         return new DataflowSitesMode();
+      case 'sitemap':
+        return new SitemapMode();
       default:
         throw new Error(`Unknown mode: ${mode}`);
     }
