@@ -30,11 +30,25 @@ curl -X POST http://localhost:3000/scrape \
   -d '{"url": "https://example-wp-shop.com", "mode": "wordpress"}'
 ```
 
-#### Custom verkkokauppa (automaattinen tunnistus)
+#### Dataflow-VK verkkokauppa
 ```bash
 curl -X POST http://localhost:3000/scrape \
   -H "Content-Type: application/json" \
-  -d '{"url": "https://example-shop.com"}'
+  -d '{"url": "https://example-shop.com", "mode": "dataflow-vk"}'
+```
+
+#### Dataflow-sites sivusto
+```bash
+curl -X POST http://localhost:3000/scrape \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://example.com", "mode": "dataflow-sites"}'
+```
+
+#### Chatbot-moodi
+```bash
+curl -X POST http://localhost:3000/scrape \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://example.com", "mode": "chatbot"}'
 ```
 
 #### Yrityssivut
@@ -99,6 +113,7 @@ Onnistunut vastaus:
 - Tarkista että sitemap.xml on saatavilla: `https://example.com/sitemap.xml`
 - Jos sitemapia ei löydy, scraper käyttää pääsivua
 
-### Mode-tunnistus ei toimi
-- Määritä mode manuaalisesti API-pyynnössä: `{"url": "...", "mode": "wordpress"}`
+### Mode-parametri puuttuu
+- Mode on pakollinen parametri. Määritä se API-pyynnössä: `{"url": "...", "mode": "wordpress"}`
+- Käytettävissä olevat modet: `wordpress`, `dataflow-vk`, `dataflow-sites`, `company`, `chatbot`
 

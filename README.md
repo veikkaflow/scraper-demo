@@ -4,11 +4,11 @@ Joustava web scraper -palvelu eri verkkosivustotyypeille. Palvelu tukee WordPres
 
 ## Ominaisuudet
 
-- **Moodipohjainen arkkitehtuuri**: Eri sivustotyypeille omat moodit (WordPress, custom e-commerce, company)
-- **Automaattinen mooditunnistus**: Tunnistaa automaattisesti sivustotyypin
-- **Sitemap-tuki**: Hyödyntää sitemapeja tehokkaaseen scrapingiin
+- **Moodipohjainen arkkitehtuuri**: Eri sivustotyypeille omat moodit (WordPress, Dataflow-sites, Dataflow-VK, Company, Chatbot)
+- **Sitemap-tuki**: Hyödyntää sitemapeja tehokkaaseen scrapingiin (opt-in)
 - **Mukautettavat konfiguraatiot**: Helppo lisätä uusia selectoreita ja käytänteitä JSON-tiedostoihin
 - **REST API**: Yksinkertainen JSON-pohjainen API
+- **Lifecycle hooks**: Modulaarinen rakenne jossa mode-luokat voivat ylikirjoittaa extraction-vaiheet
 
 ## Asennus
 
@@ -41,7 +41,7 @@ Palvelu käynnistyy oletuksena porttiin 3000.
 ```json
 {
   "url": "https://example.com",
-  "mode": "wordpress",  // optional: "wordpress", "custom-ecommerce", "company", "chatbot"
+  "mode": "wordpress",  // required: "wordpress", "dataflow-vk", "dataflow-sites", "company", "chatbot"
   "useSitemap": false   // optional: true/false (default: false)
 }
 ```
@@ -99,11 +99,18 @@ curl -X POST http://localhost:3000/scrape \
   -d '{"url": "https://example-shop.com", "mode": "wordpress", "useSitemap": true}'
 ```
 
-#### Custom verkkokauppa (automaattinen tunnistus)
+#### Dataflow-VK verkkokauppa
 ```bash
 curl -X POST http://localhost:3000/scrape \
   -H "Content-Type: application/json" \
-  -d '{"url": "https://custom-shop.com"}'
+  -d '{"url": "https://shop.com", "mode": "dataflow-vk"}'
+```
+
+#### Dataflow-sites sivusto
+```bash
+curl -X POST http://localhost:3000/scrape \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://example.com", "mode": "dataflow-sites"}'
 ```
 
 #### Yrityssivut
@@ -126,8 +133,7 @@ curl -X POST http://localhost:3000/scrape \
   "success": true,
   "data": {
     "title": "Page Title",
-    "content": "Raw HTML content",
-    "content_text": "Cleaned text content...",
+    "content": "Cleaned text content extracted from main content areas...",
     "logos": [
       {
         "src": "https://example.com/logo.png",
@@ -137,13 +143,9 @@ curl -X POST http://localhost:3000/scrape \
       }
     ],
     "colors": [
-      {
-        "hex": "#ff0000",
-        "rgb": "rgb(255, 0, 0)",
-        "type": "background",
-        "element": "header",
-        "className": "site-header"
-      }
+      "#ff0000",
+      "#00ff00",
+      "#0000ff"
     ]
   }
 }
@@ -155,9 +157,31 @@ Moodit määritellään JSON-tiedostoissa `src/config/` hakemistossa. Voit mukau
 
 ### Uuden moodin lisääminen
 
-1. Luo uusi moodiluokka `src/modes/` hakemistoon
-2. Luo konfiguraatiotiedosto `src/config/` hakemistoon
-3. Lisää moodi `src/core/scraper.js` tiedostoon
+1. Luo uusi moodiluokka `src/modes/` hakemistoon (perii `BaseMode`-luokan)
+2. Luo konfiguraatiotiedosto `src/config/` hakemistoon (JSON-muodossa)
+3. Lisää moodi `src/core/scraper.js` tiedoston `createModeInstance()` metodiin
+
+Esimerkki moodiluokasta:
+```javascript
+import BaseMode from './base-mode.js';
+
+class MyCustomMode extends BaseMode {
+  constructor() {
+    super('my-custom-mode'); // Lataa src/config/my-custom-mode.json
+  }
+
+  // Ylikirjoita lifecycle hooks tarvittaessa:
+  async beforeExtract(page, url) {
+    // Poimi data ennen unwanted poistoa
+    return {};
+  }
+
+  async afterExtract(page, url, data) {
+    // Jälkikäsittely
+    return data;
+  }
+}
+```
 
 ### Konfiguraatiotiedoston rakenne
 
@@ -199,14 +223,7 @@ docker run -p 8080:8080 -e PORT=8080 web-scraper-service
 
 ### Cloud Run -deployment
 
-#### Vaihtoehto 1: Käytä deployment-skriptiä
-
-```bash
-chmod +x cloud-run-deploy.sh
-./cloud-run-deploy.sh YOUR-PROJECT-ID web-scraper-service
-```
-
-#### Vaihtoehto 2: Manuaalinen deployment
+#### Manuaalinen deployment
 
 1. Pushaa kuva Google Container Registryyn:
 ```bash
@@ -289,12 +306,24 @@ scraper/
 ├── src/
 │   ├── api/routes/       # API-reitit
 │   ├── core/             # Scraper engine, browser, sitemap
-│   ├── modes/            # Moodiluokat
+│   ├── modes/            # Moodiluokat (perivät BaseMode)
 │   ├── config/           # Moodikonfiguraatiot (JSON)
 │   └── utils/            # Apufunktiot
 ├── Dockerfile            # Cloud Run container
 └── package.json
 ```
+
+### Lifecycle Hooks
+
+Moodiluokat käyttävät lifecycle hookeja extraction-prosessin eri vaiheissa:
+
+1. **beforeExtract()** - Suoritetaan ennen unwanted-elementtien poistoa (esim. värit, logot)
+2. **removeUnwantedElements()** - Poistaa globaalisti häiritsevät elementit
+3. **extractGenericData()** - Poimii kentät config-tiedoston mukaan
+4. **extractCustomData()** - Mode-spesifinen custom logiikka
+5. **afterExtract()** - Jälkikäsittely ja normalisointi (esim. hinnat, saatavuudet)
+
+Lisätietoja: Katso `src/modes/base-mode.js` tiedostosta template method -patternin toteutus.
 
 ## Kehitys
 
