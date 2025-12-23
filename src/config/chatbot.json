@@ -4,10 +4,6 @@
     "selectors": [],
     "patterns": []
   },
-  "sitemap": {
-    "enabled": false,
-    "priority": false
-  },
   "selectors": {
     "title": "h1, .page-title, .site-title, .hero-title, .entry-title, title",
     "max_text_length": 5000,

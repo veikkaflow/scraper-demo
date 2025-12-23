@@ -4,10 +4,6 @@
       "selectors": [],
       "patterns": []
     },
-    "sitemap": {
-      "enabled": true,
-      "priority": false
-    },
     "selectors": {
       "title": "h1, title",
       
@@ -19,14 +15,15 @@
       },
       
       "references": {
-        "container": ".background-slider-3-items",
-        "title": "h2",
-        "description": "p",
+        "container": ".reference-list-block .item",
+        "title": "h3",
+        "image": "img",
+        "description": ".description, p",
         "link": "a"
       },
       
       "products": {
-        "container": ".item-column",
+        "container": ".product-list .item-column, .item-column",
         "title": "h3",
         "image": "img",
         "badge": ".new",

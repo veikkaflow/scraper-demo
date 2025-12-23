@@ -4,10 +4,6 @@
     "selectors": [],
     "patterns": []
   },
-  "sitemap": {
-    "enabled": true,
-    "priority": false
-  },
   "selectors": {
     "title": "h1, title",
     

@@ -192,10 +192,6 @@ class MyCustomMode extends BaseMode {
     "selectors": ["CSS-selectorit tunnistamiseen"],
     "patterns": ["merkkijonot tunnistamiseen"]
   },
-  "sitemap": {
-    "enabled": true,
-    "priority": true
-  },
   "selectors": {
     "products": {
       "container": ".product",

@@ -4,10 +4,6 @@
     "selectors": ["meta[name='generator'][content*='WordPress']"],
     "patterns": ["wp-content", "wp-json", "woocommerce"]
   },
-  "sitemap": {
-    "enabled": false,
-    "priority": false
-  },
   "selectors": {
     "products": {
       "container": "li.product, .product, article.product, .woocommerce-loop-product, .woocommerce-loop-product__link, .wc-block-grid__product, [class*='product type-product'], [class*='type-product']",
