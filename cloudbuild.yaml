@@ -1,0 +1,41 @@
+steps:
+  # Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/gen-lang-client-0746010330/web-scraper-demo', '.']
+  
+  # Push to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/gen-lang-client-0746010330/web-scraper-demo']
+  
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'web-scraper-demo'  # <- Tässä määritellään mikä Cloud Run -palvelu päivittyy
+      - '--image'
+      - 'gcr.io/gen-lang-client-0746010330/web-scraper-demo'
+      - '--region'
+      - 'europe-north1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '2Gi'
+      - '--cpu'
+      - '2'
+      - '--timeout'
+      - '300'
+      - '--max-instances'
+      - '10'
+      - '--concurrency'
+      - '10'
+      - '--port'
+      - '8080'
+
+images:
+  - 'gcr.io/gen-lang-client-0746010330/web-scraper-demo'
+
+substitutions:
+  _SERVICE_NAME: 'web-scraper-demo'  # <- Tässä määritellään oletusarvo
