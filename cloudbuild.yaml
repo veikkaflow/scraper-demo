@@ -36,6 +36,8 @@ steps:
 
 images:
   - 'gcr.io/gen-lang-client-0746010330/web-scraper-demo'
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 substitutions:
   _SERVICE_NAME: 'web-scraper-demo'  # <- Tässä määritellään oletusarvo
