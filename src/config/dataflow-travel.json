@@ -8,6 +8,58 @@
     "title": "h1, title",
     
     "description": ".travel-headline-text-block p, .description",
+
+
+    "wanted_selectors": [
+      ".additional-menu-icon-block",
+      ".additional-menu-icon-block",
+      ".additional-menu-icon-block",
+      ".main-footer-block",
+      ".main-search-filter",
+      ".main-slider",
+      ".mainmenu-block",
+      ".megaheader-block",
+      ".office-list-block",
+      ".product-link-block",
+      ".products-all-block",
+      ".question-toggle-block",
+      ".social-mosaic-block",
+      ".travel-booking-management-block",
+      ".travel-breadcrumb-block",
+      ".travel-contact-form-block",
+      ".travel-contact-reservation-form-block",
+      ".travel-content-text-area-block",
+      ".travel-course-management",
+      ".travel-events-list-block",
+      ".travel-group-orders-form-block",
+      ".travel-headline-text-block",
+      ".travel-highlightbox-bg-image-block",
+      ".travel-icon-text-block",
+      ".travel-image-gallery-block",
+      ".travel-image-text-button-list-block",
+      ".travel-image-video-collage-block",
+      ".travel-info-table",
+      ".travel-invoice-offer-block",
+      ".travel-main-footer-block",
+      ".travel-mainmenu-block",
+      ".travel-main-slider",
+      ".travel-new-reservation-block",
+      ".travel-order-feedback",
+      ".travel-product-card-block",
+      ".travel-profile-card",
+      ".travel-reservation-summary-block",
+      ".travel-search-page-block",
+      ".travel-social-slider-block",
+      ".travel-sub-footer-block",
+      ".travel-subpage-hero-img-block",
+      ".travel-text-image-video-block",
+      ".travel-text-image-video-graphic-list-block",
+      ".travel-voucher-activation-page-block",
+      ".trustmary-block",
+      ".user-image-management",
+      ".user-image-slider",
+      ".image-text-mosaic-block"
+    ],
     
     "hero": {
       "container": ".travel-main-slider .item",
@@ -52,9 +104,9 @@
       "link": "a"
     },
     
-    "contact_info": {
+    "footer_info": {
       "container": ".footer-content-column",
-      "address": "p",
+      "content": "p",
       "phone": "a[href^='tel:']",
       "email": "a[href^='mailto:']"
     },
