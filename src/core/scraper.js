@@ -179,11 +179,26 @@ class Scraper {
       }
     }
 
-    // Merge results
-    const mergedData = this.mergeResults(results);
+    // Extract colors and logos from first page
+    const firstPageData = results.length > 0 ? results[0].data : null;
+    const colors = firstPageData?.colors || null;
+    const logos = firstPageData?.logos || null;
+
+    // Remove colors and logos from each page's data for pages list
+    const pages = results.map(result => {
+      const pageData = { ...result.data };
+      delete pageData.colors;
+      delete pageData.logos;
+      return {
+        url: result.url,
+        ...pageData
+      };
+    });
 
     return {
-      data: mergedData,
+      colors: colors,
+      logos: logos,
+      pages: pages,
       sitemapUsed: this.sitemapUsed,
       sitemapData: this.sitemapData,
       pagesScraped: results.length,

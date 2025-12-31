@@ -64,9 +64,11 @@ router.post('/', async (req, res, next) => {
     // Execute scraping
     const result = await scraper.scrape();
 
+    // Check if this is multi-page scraping (has pages array)
+    const isMultiPage = result.pages !== undefined;
+
     const response = {
       success: true,
-      data: result.data,
       metadata: {
         mode: mode,
         url: url,
@@ -75,17 +77,22 @@ router.post('/', async (req, res, next) => {
       }
     };
 
-    // Include multi-page metadata if available
-    if (result.pagesScraped !== undefined) {
-      response.metadata.pagesScraped = result.pagesScraped;
-      response.metadata.totalPages = result.totalPages || 0;
-      response.metadata.totalProducts = result.totalProducts || 0;
-      response.metadata.failedUrls = result.failedUrls || [];
-    }
-
-    // Include sitemap data if available
-    if (result.sitemapData) {
-      response.sitemapData = result.sitemapData;
+    if (isMultiPage) {
+      // Multi-page scraping: use colors, logos, and pages structure
+      response.colors = result.colors;
+      response.logos = result.logos;
+      response.pages = result.pages;
+      
+      // Include multi-page metadata
+      if (result.pagesScraped !== undefined) {
+        response.metadata.pagesScraped = result.pagesScraped;
+        response.metadata.totalPages = result.totalPages || 0;
+        response.metadata.totalProducts = result.totalProducts || 0;
+        response.metadata.failedUrls = result.failedUrls || [];
+      }
+    } else {
+      // Single-page scraping: use data structure (no changes)
+      response.data = result.data;
     }
 
     res.json(response);
