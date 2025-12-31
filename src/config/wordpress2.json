@@ -1,0 +1,174 @@
+{
+  "name": "wordpress2",
+  "detection": {
+    "selectors": ["meta[name='generator'][content*='WordPress']"],
+    "patterns": ["wp-content", "wp-json", "woocommerce"]
+  },
+  "selectors": {
+    "products": {
+      "container": "li.product, .product, article.product, .woocommerce-loop-product, .woocommerce-loop-product__link, .wc-block-grid__product, [class*='product type-product'], [class*='type-product']",
+      "title": "h2, h3, .product-title, .woocommerce-loop-product__title, .wc-block-grid__product-title, .entry-title, a.woocommerce-LoopProduct-link, .product_title",
+      "price": ".price, .woocommerce-Price-amount, .amount, .price-wrapper, .woocommerce-Price, span.price, .product-price",
+      "availability": ".stock-status, .availability, .stock, [class*='stock'], .stock.in-stock, .stock.out-of-stock, .woocommerce-loop-product__availability",
+      "image": "img, .product-image img, .wp-post-image, .woocommerce-loop-product__link img, .attachment-woocommerce_thumbnail",
+      "link": "a, .woocommerce-LoopProduct-link, a.woocommerce-loop-product__link"
+    },
+    "posts": {
+      "container": "article.post, .post, article[class*='post'], .wp-block-post, .entry, .blog-post, [class*='type-post'], .post-item",
+      "title": "h1, h2, h3, .entry-title, .post-title, .wp-block-post-title, .blog-title, a.entry-title-link",
+      "excerpt": ".excerpt, .entry-excerpt, .post-excerpt, .wp-block-post-excerpt, p.excerpt",
+      "content": ".entry-content, .post-content, .wp-block-post-content, .article-content",
+      "date": ".entry-date, .post-date, .published, time[datetime], .date, [class*='date']",
+      "author": ".author, .entry-author, .post-author, .byline, [class*='author'], [rel='author']",
+      "image": "img, .post-thumbnail img, .wp-post-image, .entry-image img, .featured-image img",
+      "link": "a, .entry-title a, .post-title a, .read-more",
+      "categories": ".categories, .post-categories, .entry-categories, [class*='category'], a[rel='category']",
+      "tags": ".tags, .post-tags, .entry-tags, [class*='tag'], a[rel='tag']"
+    },
+    "pages": {
+      "container": "article.page, .page, article[class*='page'], [class*='type-page'], .page-content",
+      "title": "h1, h2, .entry-title, .page-title, .wp-block-post-title",
+      "content": ".entry-content, .page-content, .wp-block-post-content, .article-content",
+      "image": "img, .page-thumbnail img, .wp-post-image, .featured-image img",
+      "link": "a"
+    },
+    "categories": {
+      "container": ".category, .categories, .category-item, [class*='category'], .wp-block-categories li, .widget_categories li",
+      "title": "a, .category-name, .category-title, h3, h4",
+      "link": "a",
+      "count": ".count, .post-count, [class*='count']"
+    },
+    "tags": {
+      "container": ".tag, .tags, .tag-item, [class*='tag'], .wp-block-tag-cloud a, .tagcloud a",
+      "title": "a, .tag-name, .tag-title",
+      "link": "a",
+      "count": ".count, .post-count, [class*='count']"
+    },
+    "comments": {
+      "container": ".comment, .wp-block-comment, [class*='comment'], .comment-item, li.comment",
+      "author": ".comment-author, .author, .comment-author-name, .fn, cite",
+      "date": ".comment-date, .comment-time, time, [class*='date']",
+      "content": ".comment-content, .comment-text, .comment-body",
+      "link": "a.comment-link, .comment-reply-link"
+    },
+    "authors": {
+      "container": ".author, .author-item, [class*='author'], .wp-block-author, .author-card",
+      "name": "h2, h3, h4, .author-name, .name, .fn",
+      "bio": ".author-bio, .bio, .description, .author-description",
+      "image": "img, .avatar, .author-avatar img, .author-image img",
+      "link": "a, .author-link"
+    },
+    "testimonials": {
+      "container": ".testimonial, .testimonial-item, [class*='testimonial'], .wp-block-testimonial, .review",
+      "quote": ".testimonial-text, .quote, .testimonial-content, blockquote, .review-text",
+      "author": ".testimonial-author, .author, .reviewer, .name",
+      "rating": ".rating, .stars, [class*='rating'], [class*='star']",
+      "image": "img, .testimonial-image img, .avatar img"
+    },
+    "team": {
+      "container": ".team-member, .team, .member, [class*='team'], [class*='member'], .staff",
+      "name": "h2, h3, h4, .member-name, .name, .team-name",
+      "role": ".role, .position, .job-title, .title, .member-role",
+      "bio": ".bio, .description, .member-bio, .team-bio",
+      "image": "img, .member-image img, .team-image img, .avatar img",
+      "email": "a[href^='mailto:'], .email",
+      "social": ".social-links, .social, a[href*='linkedin'], a[href*='twitter']"
+    },
+    "events": {
+      "container": ".event, .event-item, [class*='event'], .wp-block-event, .tribe-events-list-event",
+      "title": "h2, h3, h4, .event-title, .entry-title",
+      "date": ".event-date, .date, time[datetime], .start-date, [class*='date']",
+      "location": ".event-location, .location, .venue, [class*='location']",
+      "description": ".event-description, .description, .excerpt",
+      "image": "img, .event-image img, .featured-image img",
+      "link": "a, .event-link"
+    },
+    "gallery": {
+      "container": ".gallery-item, .gallery img, .wp-block-gallery img, [class*='gallery'] img, .attachment",
+      "image": "img",
+      "caption": ".caption, .wp-caption-text, figcaption, [class*='caption']",
+      "link": "a"
+    },
+    "services": {
+      "container": ".service, [class*='service'], .service-item, .wp-block-service, .feature",
+      "title": "h2, h3, h4, .service-title, .title, .entry-title",
+      "description": "p, .service-description, .description, .excerpt",
+      "icon": ".icon, .service-icon, [class*='icon'], img.icon",
+      "image": "img, .service-image img",
+      "link": "a, .service-link"
+    },
+    "menus": {
+      "container": ".menu-item, .nav-menu li, .wp-block-navigation-item, nav li, .menu li",
+      "title": "a, .menu-item-title, .nav-link",
+      "link": "a",
+      "description": ".description, .menu-item-description"
+    },
+    "widgets": {
+      "container": ".widget, [class*='widget'], .wp-block-widget, aside .widget",
+      "title": "h2, h3, h4, .widget-title, .title",
+      "content": ".widget-content, .widget-text, .textwidget"
+    },
+    "title": "h1, .site-title, .entry-title, .page-title",
+    "description": ".site-description, .entry-content, .post-content, .page-description",
+    "max_text_length": 5000,
+    "min_text_length": 20,
+    "wanted_selectors": [
+      "main",
+      "article",
+      ".main-content",
+      ".content",
+      ".entry-content",
+      ".post-content",
+      ".article-content",
+      "[role='main']"
+    ],
+    "logos": {
+      "container": "img[alt*='logo'], img[alt*='Logo'], .logo img, [class*='logo'] img, header img, .site-logo img, .brand-logo img, [id*='logo'] img",
+      "src": "src",
+      "alt": "alt"
+    },
+    "colors": {
+      "elements": "body, header, footer, nav, main, .header, .footer, .navbar, .hero, .banner, h1, h2, h3, a, button, .btn",
+      "properties": ["background-color", "color"],
+      "maxColors": 10
+    },
+    "unwanted_selectors": [
+      ".cookie-block",
+      "[class*='cookie']",
+      "[id*='cookie']",
+      "#notification-block",
+      "[class*='notification']",
+      "nav",
+      "header",
+      "footer",
+      "aside",
+      "script",
+      "style",
+      "noscript",
+      "[class*='privacy']",
+      "[id*='privacy']",
+      "[class*='gdpr']",
+      "[id*='gdpr']",
+      "[class*='consent']",
+      "[id*='consent']",
+      "[class*='banner']",
+      "[id*='banner']",
+      "[class*='popup']",
+      "[id*='popup']",
+      "[class*='modal']",
+      "[id*='modal']",
+      "[class*='slider']",
+      "[class*='menu']",
+      "[class*='cart']",
+      "[class*='login']",
+      "[class*='account']",
+      "[role='navigation']",
+      "[role='banner']",
+      "[role='complementary']"
+    ]
+  },
+  "extractors": {
+    "custom": []
+  }
+}
+
