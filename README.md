@@ -5,7 +5,6 @@ Joustava web scraper -palvelu eri verkkosivustotyypeille. Palvelu tukee WordPres
 ## Ominaisuudet
 
 - **Moodipohjainen arkkitehtuuri**: Eri sivustotyypeille omat moodit (WordPress, Dataflow-sites, Dataflow-VK, Company, Chatbot)
-- **Sitemap-tuki**: Hyödyntää sitemapeja tehokkaaseen scrapingiin (opt-in)
 - **Mukautettavat konfiguraatiot**: Helppo lisätä uusia selectoreita ja käytänteitä JSON-tiedostoihin
 - **REST API**: Yksinkertainen JSON-pohjainen API
 - **Lifecycle hooks**: Modulaarinen rakenne jossa mode-luokat voivat ylikirjoittaa extraction-vaiheet
@@ -111,13 +110,6 @@ curl -X POST http://localhost:3000/scrape \
 curl -X POST http://localhost:3000/scrape \
   -H "Content-Type: application/json" \
   -d '{"url": "https://example.com", "mode": "dataflow-sites"}'
-```
-
-#### Yrityssivut
-```bash
-curl -X POST http://localhost:3000/scrape \
-  -H "Content-Type: application/json" \
-  -d '{"url": "https://company.com", "mode": "company"}'
 ```
 
 #### Chatbot-moodi (sisältöteksti, logot, värit)
@@ -282,11 +274,6 @@ Palvelu tarjoaa health check -endpointin:
 }
 ```
 
-## Sitemap-tuki
-
-Sitemap-tuki on **opt-in** -ominaisuus. Oletuksena scraper ei käytä sitemappia, vaan scrapeaa suoraan annetun URL:n sisällön.
-
-Lisätietoja sitemap-tuesta: [SITEMAP.md](SITEMAP.md)
 
 ## Teknologiat
 

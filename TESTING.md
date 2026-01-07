@@ -51,12 +51,6 @@ curl -X POST http://localhost:3000/scrape \
   -d '{"url": "https://example.com", "mode": "chatbot"}'
 ```
 
-#### Yrityssivut
-```bash
-curl -X POST http://localhost:3000/scrape \
-  -H "Content-Type: application/json" \
-  -d '{"url": "https://example-company.com", "mode": "company"}'
-```
 
 ## Testaus Postmanissa tai Thunder Clientissa
 
